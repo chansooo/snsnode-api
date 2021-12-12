@@ -7,7 +7,7 @@ const fs = require('fs');
 const { isLoggedIn, isNotLoggedIn,  verifyToken, apiLimiter } = require('./middlewares');
 const { Domain, User, Post, Hashtag, Like, Bookmark, Comment } = require('../models');
 
-const postRouter = express.Router();
+export const postRouter = express.Router();
 
 
 try {
@@ -150,3 +150,6 @@ postRouter.delete('/bookmark/:id', verifyToken, apiLimiter, async(req, res)=>{
     Bookmark.destroy({where: {bookmarkId: req.params.id}});
 });
 
+postRouter.get('/?keyword=', verifyToken, apiLimiter, async(req, res)=>{
+  //어려울 것 같은데..
+})
